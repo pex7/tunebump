@@ -1,0 +1,151 @@
+body {
+    background: #fafafa;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #333;
+}
+
+#header-bar {
+    height: 15em;
+    width: auto;
+    background: #556378;
+    margin-bottom: .5em;
+}
+
+#header-bar h1 {
+    font-size: 60px;
+    line-height: 1;
+    letter-spacing: -1px;
+    margin: 0;
+    padding: .5em;
+    color: #93C054;
+    font-family: 'Oleo Script', cursive;
+}
+
+#header-bar p {
+    font-size: 20px;
+    margin: 0px auto;
+    text-align: center;
+    color: #fff;
+    font-family: 'Oleo Script', cursive;
+    text-shadow: 2px 2px #000;
+}
+
+.login_signup {
+    position: absolute;
+    top: 1em;
+    left: 84%;
+
+}
+
+.login_signup a {
+    text-decoration: none;
+    color: #fafafa;
+    padding: .5em;
+    font-family:'Noto Sans', sans-serif;
+}
+
+.login_signup a:hover {
+    color: #FFBE19;
+}
+
+.stripe {
+    height: 40em;
+    width: auto;
+    background: #fafafa;
+    margin-top: .40em;
+}
+
+.stripe a {
+    float: right;
+}
+
+.stripe2 {
+    height: 15em;
+    width: auto;
+    background: #93C054;
+}
+
+.stripe2 p {
+    font-size: 20px;
+    margin: 0px auto;
+    padding-top: 5em;
+    text-align: center;
+    color: #9200B2;
+    font-family: 'Oleo Script', cursive;
+}
+
+.nav-bar {
+    height: 39em;
+    width: 10em;
+    float: left;
+    background: #3F4850;
+    border-radius: 5px;
+    padding: 0 1em;
+}
+
+.nav-bar ul {
+   padding: 0;
+}
+
+.nav-bar li {
+    list-style-type: none;
+    padding-top: .5em;
+    padding-bottom: .5em;
+    border-bottom: 1px solid #fafafa;
+    text-align: center;
+}
+
+.nav-bar li a {
+    text-decoration: none;
+    color: #fafafa;
+    font-family:'Noto Sans', sans-serif;
+}
+
+.nav-bar li a:hover {
+    color: #FFBE19;
+}
+
+.footer {
+    background: #3F4850;
+    height: 7em;
+    width: auto;
+    text-align: center;
+}
+
+.footer a {
+    text-decoration: none;
+    color: #fafafa;
+    font-family:'Noto Sans', sans-serif;
+    list-style-type: none;
+    padding: 1em;
+}
+
+.footer a:hover {
+    color: #FFBE19;
+}
+
+.container {
+    width: 600px;
+    margin: 0 auto;
+}
+
+.form-horizontal {
+    position: relative;
+    margin: 0 auto;
+    width: 500px;
+    padding: 20px 20px 20px;
+    border: 1px solid #cfcfcf;
+    border-radius: 4px;
+    background-color: #eee;
+}
+
+.form-horizontal h1 {
+    text-align: center;
+    margin-bottom: 15px;
+    margin-top: 0;
+
+}
+
+.form-group {
+    height: 30px;
+}
