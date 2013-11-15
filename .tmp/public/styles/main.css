@@ -1,5 +1,5 @@
 body {
-    background: #fafafa;
+    background-color: #fafafa !important;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #333;
 }
@@ -8,7 +8,7 @@ body {
     height: 15em;
     width: auto;
     background: #556378;
-    margin-bottom: .5em;
+    
 }
 
 #header-bar h1 {
@@ -48,12 +48,12 @@ body {
     color: #FFBE19;
 }
 
-.stripe {
+/*.stripe {
     height: 40em;
     width: auto;
     background: #fafafa;
     margin-top: .40em;
-}
+}*/
 
 .stripe a {
     float: right;
@@ -63,6 +63,7 @@ body {
     height: 15em;
     width: auto;
     background: #93C054;
+    clear: both;
 }
 
 .stripe2 p {
@@ -70,8 +71,9 @@ body {
     margin: 0px auto;
     padding-top: 5em;
     text-align: center;
-    color: #9200B2;
+    color: #3F4850;
     font-family: 'Oleo Script', cursive;
+    text-shadow: 1px 1px #ccc;
 }
 
 .nav-bar {
@@ -110,6 +112,7 @@ body {
     height: 7em;
     width: auto;
     text-align: center;
+    clear: both;
 }
 
 .footer a {
@@ -148,4 +151,11 @@ body {
 
 .form-group {
     height: 30px;
+}
+
+.title h1 {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background-color: #fafafa;
 }
