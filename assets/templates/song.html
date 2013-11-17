@@ -1,0 +1,25 @@
+<!-- <form class="form-horizontal2" action="/user", method="post">
+	<h1>Upload a Song</h1>
+	<input class="btn btn-primary" value="Upload Song" ng-click="upload()">
+    <input type="file" ng-model="newSong.file" enctype="multipart/form-data">
+</form> -->
+
+<div class="form-horizontal2" ng-controller="MyCtrl">
+	<h1>Upload a Song</h1>
+  <!-- <input type="text" ng-model="myModelObj"> -->
+  <button class="btn btn-warning" ng-click="upload.abort()">Cancel Upload</button>
+	<div class="file-input-wrapper">
+		<button class="btn-file-input">Upload Song</button>
+		<input type="file" ng-file-select="onFileSelect($files)">
+	</div>
+  <!-- <input class="btn btn-primary" type="file" ng-file-select="onFileSelect($files)" multiple> -->
+<!--   <div ng-file-drop="onFileSelect($files)" ng-file-drag-over-class="optional-css-class"
+        ng-show="dropSupported">drop files here</div>
+  <div ng-file-drop-available="dropSupported=true" 
+        ng-show="!dropSupported">HTML5 Drop File is not supported!</div> -->
+</div>
+
+<audio controls>
+  <source src="uploads/test.mp3" type="audio/mpeg">
+Your browser does not support the audio element.
+</audio>

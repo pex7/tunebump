@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ["ui.router"])
+var myApp = angular.module('myApp', ["ui.router", "angularFileUpload"])
     myApp.config(function($stateProvider, $urlRouterProvider){
       
       $stateProvider
@@ -101,5 +101,36 @@ var myApp = angular.module('myApp', ["ui.router"])
       	.state("classical", {
             url: "/classical",
             templateUrl: "/templates/classical.html"
+      	}),
+
+      $stateProvider
+      	.state("song", {
+            url: "/song",
+            templateUrl: "/templates/song.html"
       	})
 });
+
+var MyCtrl = [ '$scope', '$upload', function($scope, $upload) {
+  $scope.onFileSelect = function($files) {
+    //$files: an array of files selected, each file has name, size, and type.
+    for (var i = 0; i < $files.length; i++) {
+      var $file = $files[i];
+      $scope.upload = $upload.upload({
+        url: 'song/upload', //upload.php script, node.js route, or servlet url
+        method: "POST",
+        // headers: {'headerKey': 'headerValue'}, withCredential: true,
+        // data: {myObj: $scope.myModelObj},
+        file: $file,
+        //(optional) set 'Content-Desposition' formData name for file
+        //fileFormDataName: myFile,
+        progress: function(evt) {
+          console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
+        }
+      }).success(function(data, status, headers, config) {
+        // file is uploaded successfully
+        console.log(data);
+      })
+      //.error(...).then(...); 
+    }
+  }
+}];
