@@ -1,0 +1,10 @@
+<div class="title" ng-controller="MyCtrl">
+	<h1>{{genre.replace('_', ' ')}}</h1>
+	<h3>If you like a song, bump it to your friends</h3>
+</div>
+
+<div class="audio-control" ng-repeat="song in songs">
+	<h1>{{song.artist}} - {{song.title}}</h1>
+	<audio src="uploads/{{song.fileId}}.mp3" type="audio/mp3" controls="controls"></audio>
+	<button class="btn btn-info" ng-click="bump()">Bump</button>
+</div>

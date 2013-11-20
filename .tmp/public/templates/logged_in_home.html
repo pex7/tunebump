@@ -1,0 +1,44 @@
+<h1>Welcome to Tune Bump!</h1>
+<h3>Create and Artist/Band page or simply start discovering music...</h3>
+
+<form class="form-horizontal" role="form">
+	<h1>Sign Up</h1>
+  <div class="form-group">
+    <label for="inputArtistName" class="col-sm-1 control-label"></label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputArtistName" placeholder="Artist or Band name">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputArtistGenre" class="col-sm-1 control-label"></label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputArtistGenre" placeholder="Genre">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputArtistLocation" class="col-sm-1 control-label"></label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputArtistLocation" placeholder="Location">
+    </div>
+  </div>
+  <textarea class="from-control" rows="3"></textarea>
+  <div class="form-horizontal2" ng-controller="MyCtrl">
+	<h1>Upload a Song</h1>
+	  <!-- <input type="text" ng-model="myModelObj"> -->
+	  <button class="btn btn-warning" ng-click="upload.abort()">Cancel Upload</button>
+		<div class="file-input-wrapper">
+			<button class="btn-file-input">Upload Song</button>
+			<input type="file" ng-file-select="onFileSelect($files)">
+		</div>
+	  <!-- <input class="btn btn-primary" type="file" ng-file-select="onFileSelect($files)" multiple> -->
+	<!--   <div ng-file-drop="onFileSelect($files)" ng-file-drag-over-class="optional-css-class"
+	        ng-show="dropSupported">drop files here</div>
+	  <div ng-file-drop-available="dropSupported=true" 
+	        ng-show="!dropSupported">HTML5 Drop File is not supported!</div> -->
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-1 col-sm-10">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </div>
+</form>

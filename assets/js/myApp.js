@@ -16,91 +16,106 @@ var myApp = angular.module('myApp', ["ui.router", "angularFileUpload"])
       $stateProvider
       	.state("rock", {
             url: "/rock",
-            templateUrl: "/templates/rock.html"
+            controller: SongCtrl,
+            templateUrl: "/templates/genre.html"
       	}),
 
       $stateProvider
       	.state("indie", {
             url: "/indie",
-            templateUrl: "/templates/indie.html"
+            controller: SongCtrl,
+            templateUrl: "/templates/genre.html"
       	}),
 
       $stateProvider
       	.state("r&b", {
             url: "/r&b",
-            templateUrl: "/templates/r&b.html"
+            controller: SongCtrl,
+            templateUrl: "/templates/genre.html"
       	}),
 
       $stateProvider
       	.state("hip_hop", {
             url: "/hip_hop",
-            templateUrl: "/templates/hip_hop.html"
+            controller: SongCtrl,
+            templateUrl: "/templates/genre.html"
       	}),
 
       $stateProvider
       	.state("folk", {
             url: "/folk",
-            templateUrl: "/templates/folk.html"
+            controller: SongCtrl,
+            templateUrl: "/templates/genre.html"
       	}),
 
       $stateProvider
       	.state("country", {
             url: "/country",
-            templateUrl: "/templates/country.html"
+            controller: SongCtrl,
+            templateUrl: "/templates/genre.html"
       	}),
 
       $stateProvider
       	.state("bluegrass", {
             url: "/bluegrass",
-            templateUrl: "/templates/bluegrass.html"
+            controller: SongCtrl,
+            templateUrl: "/templates/genre.html"
       	}),
 
       $stateProvider
       	.state("punk", {
             url: "/punk",
-            templateUrl: "/templates/punk.html"
+            controller: SongCtrl,
+            templateUrl: "/templates/genre.html"
       	}),
 
       $stateProvider
       	.state("soul", {
             url: "/soul",
-            templateUrl: "/templates/soul.html"
+            controller: SongCtrl,
+            templateUrl: "/templates/genre.html"
       	}),
 
       $stateProvider
       	.state("blues", {
             url: "/blues",
-            templateUrl: "/templates/blues.html"
+            controller: SongCtrl,
+            templateUrl: "/templates/genre.html"
       	}),
 
       $stateProvider
       	.state("americana", {
             url: "/americana",
-            templateUrl: "/templates/americana.html"
+            controller: SongCtrl,
+            templateUrl: "/templates/genre.html"
       	}),
 
       $stateProvider
       	.state("heavy_metal", {
             url: "/heavy_metal",
-            templateUrl: "/templates/heavy_metal.html"
+            controller: SongCtrl,
+            templateUrl: "/templates/genre.html"
       	}),
 
       $stateProvider
       	.state("gospel", {
             url: "/gospel",
-            templateUrl: "/templates/gospel.html"
+            controller: SongCtrl,
+            templateUrl: "/templates/genre.html"
       	}),
 
       $stateProvider
       	.state("acoustic", {
             url: "/acoustic",
-            templateUrl: "/templates/acoustic.html"
+            controller: SongCtrl,
+            templateUrl: "/templates/genre.html"
       	}),
 
       $stateProvider
       	.state("classical", {
             url: "/classical",
-            templateUrl: "/templates/classical.html"
+            controller: SongCtrl,
+            templateUrl: "/templates/genre.html"
       	}),
 
       $stateProvider
@@ -110,13 +125,27 @@ var myApp = angular.module('myApp', ["ui.router", "angularFileUpload"])
       	})
 });
 
-var MyCtrl = [ '$scope', '$upload', function($scope, $upload) {
+var MyCtrl = [ '$scope', '$upload', '$location', '$rootScope', function($scope, $upload, $location, $rootScope) {
+
+	$scope.possible_genres = [{name:'Rock'}, 
+		{name:'Indie'}, {name:'R&B'}, {name:'Hip Hop'}, 
+		{name:'Folk'}, {name:'Country'}, {name:'Bluegrass'},
+		{name:'Punk'}, {name:'Soul'}, {name:'Blues'},
+		{name:'Americana'}, {name:'Heavy Metal'}, {name:'Gospel'},
+		{name:'Acoustic'}, {name:'Classical'}];
+
+	$scope.artist = '';
+	$scope.song_title = '';
+	
+	$scope.upload_genre = $scope.possible_genres[0];
+
+
   $scope.onFileSelect = function($files) {
     //$files: an array of files selected, each file has name, size, and type.
     for (var i = 0; i < $files.length; i++) {
       var $file = $files[i];
       $scope.upload = $upload.upload({
-        url: 'song/upload', //upload.php script, node.js route, or servlet url
+        url: 'song/upload?genre='+encodeURIComponent($scope.upload_genre.name.toLowerCase())+'&artist='+encodeURIComponent($scope.artist)+'&song_title='+encodeURIComponent($scope.song_title), //upload.php script, node.js route, or servlet url
         method: "POST",
         // headers: {'headerKey': 'headerValue'}, withCredential: true,
         // data: {myObj: $scope.myModelObj},
@@ -133,4 +162,29 @@ var MyCtrl = [ '$scope', '$upload', function($scope, $upload) {
       //.error(...).then(...); 
     }
   }
+
+  $scope.bump = function () {
+    FB.ui({
+       method:'feed',
+       type: 'audio',
+       name: 'Tune Bump',
+       link: 'https://developers.facebook.com/docs/reference/dialogs/',
+       source: 'uploads/{{song.fileId}}.mp3',
+       description: 'Bump a song to a friend.'
+    });
+  }
+
+  
 }];
+
+var SongCtrl = ['$scope', '$location', '$http', '$rootScope', function($scope, $location, $http, $rootScope) {
+	var genre = $location.path().replace('/', '');
+	$rootScope.genre = genre;
+	$scope.genre = genre.toUpperCase();
+	console.log("current genre", genre);
+	$http.get('/song?genre='+encodeURIComponent(genre)).success(function(result) {
+		$scope.songs = result;
+		console.log("songs of genre", genre, result);
+	});
+}];
+

@@ -6,25 +6,49 @@
  * @docs		:: http://sailsjs.org/#!documentation/models
  */
 
+var bcrypt = require("bcrypt");
+
 module.exports = {
 
   attributes: {
   	
   	username: {
   		type: 'string',
-  		unique: true
+  		unique: true,
+      required: true
   	},
 
   	email: {
-  		type: 'email',
-  		required: true
+  		type: 'string',
+  		required: true,
+      email: true
   	},
 
   	password: {
   		type: 'string',
   		required: true
-  	}
+  	},
+
+    toJSON: function() {
+      var obj = this.toObject();
+      delete obj.password;
+      return obj;
+    }
     
+  },
+
+  beforeCreate: function(user, cb) {
+    bcrypt.genSalt(10, function(err, salt) {
+      bcrypt.has(user.password, salt, function(err, hash) {
+        if(err) {
+          console.log(err);
+          cb(err);
+        } else {
+          user.password = hash;
+          cb(null, user);
+        }
+      });
+    });
   }
 
 };
