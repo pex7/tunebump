@@ -169,7 +169,7 @@ var MyCtrl = [ '$scope', '$upload', '$location', '$rootScope', function($scope, 
        type: 'audio',
        name: 'Tune Bump',
        link: 'https://developers.facebook.com/docs/reference/dialogs/',
-       source: 'http://localhost:1337/uploads/{{song.fileId}}.mp3',
+       source: 'http://localhost:1337/uploads/'+$scope.song.field+'.mp3',
        description: 'Bump a song to a friend.'
     });
   }
