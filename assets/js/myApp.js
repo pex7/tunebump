@@ -163,7 +163,7 @@ var MyCtrl = [ '$scope', '$upload', '$location', '$rootScope', function($scope, 
     }
   }
 
-  $scope.bump = function () {
+  $scope.bump = function (field) {
     FB.ui({
        method:'feed',
        type: 'audio',
