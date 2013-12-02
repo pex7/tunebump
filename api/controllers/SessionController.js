@@ -17,9 +17,25 @@
 
 module.exports = {
     
-  
+	// create: function(req, res, next) {
+	// 	if(!req.param('email') || !req.param('password')) {
+	// 		var usernamePasswordRequiredError= [{name: 'usernamePasswordRequired', message: "You must enter a username and password."}];
+	// 	}
+	// 	console.log(usernamePasswordRequiredError);
+	// 	res.redirect('/templates/login');
+	// }  
+
+	// User.findOneByEmail(req.param('email')).done(function(err, user) {
+	// 	if(err) return next(err);
+
+	// 	if(!user) {
+	// 		var noAccountError = [{name: 'noAccount', message: "Email address does not exist"}];
+	// 	}
+
+	// 	res.redirect('/templates/login');
 
 
+	// });
   /**
    * Overrides for the settings in `config/controllers.js`
    * (specific to SessionController)

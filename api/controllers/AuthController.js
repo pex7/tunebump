@@ -22,7 +22,7 @@ var passport = require('passport')
 module.exports = {
 
   login: function(req, res) {
-    res.view();
+    res.redirect('/');
   },
 
   process: function(req, res) {

@@ -21,45 +21,6 @@ var passport = require('passport')
 
 module.exports = {
 
-	create: function(req, res, next) {
-
-		console.log(req.query);
-
-		User.create(req.query, function userCreated (err, user){
-			console.log("user created");
-			console.log(err);
-			if(err) return next(err);
-			// res.json(user);
-			res.redirect('/user/show'+user.id);
-		});
-	},
-
-	show: function(req, res, next) {
-		User.findOne(req.param('id'), function foundUser(err, user){
-			if(err) return next(err);
-			if(!user) return next();
-			JSON.stringify(user);
-			res.view('user');
-		});
-	},
-
-	index: function(req, res, next) {
-		User.find(function foundUsers(err, users){
-			if(err) return next(err);
-			res.view({
-				users: users
-			});
-		});
-	},
-
-	update: function(req, res, next) {
-		User.update(req.param('id'), req.params.all(), function userUpdated(err) {
-			if(err) {
-				return res.redirect('/user/edit/' + req.param('id'));
-			}
-			res.redirect('/user/show/' + req.param('id'));
-		});
-	},
 
   /**
    * Overrides for the settings in `config/controllers.js`

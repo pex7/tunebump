@@ -122,10 +122,18 @@ var myApp = angular.module('myApp', ["ui.router", "angularFileUpload"])
       	.state("song", {
             url: "/song",
             templateUrl: "/templates/song.html"
-      	})
+      	}),
+
+      $stateProvider
+        .state("tune", {
+          url:"/tune",
+          templateUrl: "/templates/tune.html"
+        })
 });
 
-var MyCtrl = [ '$scope', '$upload', '$location', '$rootScope', function($scope, $upload, $location, $rootScope) {
+var MyCtrl = [ '$scope', '$upload', '$location', '$rootScope', '$route', function($scope, $upload, $location, $rootScope, $route) {
+
+  // $scope.route = $route;
 
 	$scope.possible_genres = [{name:'Rock'}, 
 		{name:'Indie'}, {name:'R&B'}, {name:'Hip Hop'}, 
@@ -163,16 +171,18 @@ var MyCtrl = [ '$scope', '$upload', '$location', '$rootScope', function($scope, 
     }
   }
 
-  $scope.bump = function (field) {
-    FB.ui({
-       method:'feed',
-       type: 'audio',
-       name: 'Tune Bump',
-       link: 'https://developers.facebook.com/docs/reference/dialogs/',
-       source: 'http://localhost:1337/uploads/'+$scope.song.field+'.mp3',
-       description: 'Bump a song to a friend.'
-    });
-  }
+
+
+  // $scope.bump = function (field) {
+  //   FB.ui({
+  //      method:'feed',
+  //      type: 'audio',
+  //      name: 'Tune Bump',
+  //      link: 'https://developers.facebook.com/docs/reference/dialogs/',
+  //      source: 'http://localhost:1337/uploads/'+$scope.song.field+'.mp3',
+  //      description: 'Bump a song to a friend.'
+  //   });
+  // }
 
 
 }];

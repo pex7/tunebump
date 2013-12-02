@@ -1,10 +1,11 @@
 <div ng-controller="MyCtrl">
 	<div class="title">
-		<h1>{{genre.replace('_', ' ')}}</h1>
+		<h1>{{song.genre}}</h1>
+		<h1>{{route.current.params}}</h1>
 		<h3>If you like a song, bump it to your friends</h3>
 	</div>
 
-	<div class="audio-control" ng-repeat="song in songs">
+	<div class="audio-control">
 		<h1>{{song.artist}} - {{song.title}}</h1>
 		<audio src="uploads/{{song.fileId}}.mp3" type="audio/mp3" controls="controls"></audio>
 		<a ng-href="https://www.facebook.com/sharer/sharer.php?u=http://tb.tt:1337/tune?id={{song.id}}" target="_blank" class="btn btn-info">Bump</a>
