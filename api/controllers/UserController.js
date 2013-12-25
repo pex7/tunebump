@@ -32,15 +32,15 @@ module.exports = {
 };
 
 
-	passport.serializeUser(function(user, done) {
+passport.serializeUser(function(user, done) {
 		done(null, user.id);
-	});
+});
 
-	passport.deserializeUser(function(id, done) {
-		findById(id, function(err, user) {
+passport.deserializeUser(function(id, done) {
+	findById(id, function(err, user) {
 			done(err, user);
-		});
 	});
+});
 
 passport.use(new LocalStrategy(
 		function(username, password, done){
